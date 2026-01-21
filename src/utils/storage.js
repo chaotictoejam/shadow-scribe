@@ -78,6 +78,17 @@ async function setGlobalState(enabled) {
   });
 }
 
+// Export for ES6 modules
+export {
+  DEFAULT_PREFERENCES,
+  getPreferences,
+  setPreferences,
+  getDocumentThemeState,
+  setDocumentThemeState,
+  getGlobalState,
+  setGlobalState,
+};
+
 // Make functions available globally for content scripts
 if (typeof window !== 'undefined') {
   window.DEFAULT_PREFERENCES = DEFAULT_PREFERENCES;

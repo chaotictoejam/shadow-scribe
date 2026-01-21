@@ -105,6 +105,9 @@ class ToggleButton {
   }
 }
 
+// Export for ES6 modules
+export default ToggleButton;
+
 // Export for testing
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = ToggleButton;

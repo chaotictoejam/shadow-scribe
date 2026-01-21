@@ -68,6 +68,9 @@ async function broadcastToAllTabs(message) {
   }
 }
 
+// Export for ES6 modules
+export { MESSAGE_TYPES, sendMessage, broadcastToAllTabs };
+
 // Make functions and constants available globally
 if (typeof window !== 'undefined') {
   window.MESSAGE_TYPES = MESSAGE_TYPES;

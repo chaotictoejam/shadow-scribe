@@ -70,7 +70,19 @@ class ThemeManager {
       '--dark-accent',
       this.preferences.accentColor || '#4a9eff'
     );
+    
+    // Apply dark mode class
     document.body.classList.add('shadow-scribe-dark');
+    
+    // Apply inline styles directly to body for maximum specificity
+    document.body.style.backgroundColor = this.preferences.backgroundColor || '#1e1e1e';
+    document.body.style.color = this.preferences.textColor || '#e0e0e0';
+    
+    // Apply styles to iframes (Proton Docs uses iframes for document content)
+    this.applyStylesToIframes();
+    
+    // Apply styles to all text elements directly
+    this.applyStylesToElements();
   }
 
   /**
@@ -83,6 +95,125 @@ class ThemeManager {
     root.style.removeProperty('--dark-text');
     root.style.removeProperty('--dark-accent');
     document.body.classList.remove('shadow-scribe-dark');
+    
+    // Remove inline styles from body
+    document.body.style.removeProperty('background-color');
+    document.body.style.removeProperty('color');
+    
+    // Remove styles from iframes
+    this.removeStylesFromIframes();
+    
+    // Remove styles from elements
+    this.removeStylesFromElements();
+  }
+
+  /**
+   * Internal: Apply dark mode styles directly to all text elements
+   * This ensures styles override Proton's inline styles
+   */
+  applyStylesToElements() {
+    const bgColor = this.preferences.backgroundColor || '#1e1e1e';
+    const textColor = this.preferences.textColor || '#e0e0e0';
+    
+    // Apply background to container elements only
+    const containers = document.querySelectorAll('div[class*="editor"], div[class*="document"], div[class*="content"], main, article, section');
+    containers.forEach((el) => {
+      el.style.setProperty('background-color', bgColor, 'important');
+    });
+    
+    // Apply text color to all text elements (but not background)
+    const textElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, span, a, td, th, label');
+    textElements.forEach((el) => {
+      el.style.setProperty('color', textColor, 'important');
+    });
+    
+    // Apply to divs that contain text (but check if they're not containers)
+    const divs = document.querySelectorAll('div');
+    divs.forEach((el) => {
+      // Only apply color, not background, to avoid white boxes
+      if (el.textContent && el.textContent.trim().length > 0) {
+        el.style.setProperty('color', textColor, 'important');
+      }
+      // Apply background only to large container divs
+      if (el.offsetHeight > 100 || el.offsetWidth > 500) {
+        el.style.setProperty('background-color', bgColor, 'important');
+      }
+    });
+  }
+
+  /**
+   * Internal: Remove dark mode styles from elements
+   */
+  removeStylesFromElements() {
+    const elements = document.querySelectorAll('div, span, p, h1, h2, h3, h4, h5, h6, li, td, th, a, main, article, section, label');
+    elements.forEach((el) => {
+      el.style.removeProperty('color');
+      el.style.removeProperty('background-color');
+    });
+  }
+
+  /**
+   * Internal: Apply dark mode styles to iframes
+   * Proton Docs uses iframes for the document editor content
+   */
+  applyStylesToIframes() {
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach((iframe) => {
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc && iframeDoc.body) {
+          // Set CSS variables
+          const root = iframeDoc.documentElement;
+          root.style.setProperty('--dark-bg', this.preferences.backgroundColor || '#1e1e1e');
+          root.style.setProperty('--dark-text', this.preferences.textColor || '#e0e0e0');
+          root.style.setProperty('--dark-accent', this.preferences.accentColor || '#4a9eff');
+          
+          // Add dark mode class
+          iframeDoc.body.classList.add('shadow-scribe-dark');
+          
+          // Inject CSS link into iframe
+          let styleLink = iframeDoc.getElementById('shadow-scribe-styles');
+          if (!styleLink) {
+            styleLink = iframeDoc.createElement('link');
+            styleLink.id = 'shadow-scribe-styles';
+            styleLink.rel = 'stylesheet';
+            styleLink.href = browser.runtime.getURL('content/dark-mode.css');
+            iframeDoc.head.appendChild(styleLink);
+          }
+        }
+      } catch (error) {
+        // Cross-origin iframes will throw errors - ignore them
+        console.debug('Shadow Scribe: Cannot access iframe:', error.message);
+      }
+    });
+  }
+
+  /**
+   * Internal: Remove dark mode styles from iframes
+   */
+  removeStylesFromIframes() {
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach((iframe) => {
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc && iframeDoc.body) {
+          const root = iframeDoc.documentElement;
+          root.style.removeProperty('--dark-bg');
+          root.style.removeProperty('--dark-text');
+          root.style.removeProperty('--dark-accent');
+          iframeDoc.body.classList.remove('shadow-scribe-dark');
+          
+          // Remove injected CSS
+          const styleLink = iframeDoc.getElementById('shadow-scribe-styles');
+          if (styleLink) {
+            styleLink.remove();
+          }
+        }
+      } catch (error) {
+        // Cross-origin iframes will throw errors - ignore them
+        console.debug('Shadow Scribe: Cannot access iframe:', error.message);
+      }
+    });
   }
 
   /**
@@ -91,11 +222,34 @@ class ThemeManager {
    * The observer watches for new elements being added to the DOM
    */
   observeDOMChanges() {
+    let debounceTimer = null;
+    
     this.observer = new MutationObserver((mutations) => {
-      // Re-apply styles to new elements if needed
-      // The CSS cascade handles most cases automatically via the body class
-      // This observer is here for future enhancements if specific elements
-      // need special handling when dynamically added
+      // Debounce to avoid excessive style applications
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+      }
+      
+      debounceTimer = setTimeout(() => {
+        let shouldReapply = false;
+        
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeName === 'IFRAME') {
+              this.applyStylesToIframes();
+              shouldReapply = true;
+            }
+            // Check if significant content was added
+            if (node.nodeType === 1 && node.textContent && node.textContent.trim().length > 10) {
+              shouldReapply = true;
+            }
+          });
+        });
+        
+        if (shouldReapply) {
+          this.applyStylesToElements();
+        }
+      }, 100); // Wait 100ms before reapplying
     });
 
     this.observer.observe(document.body, {
@@ -115,6 +269,9 @@ class ThemeManager {
     }
   }
 }
+
+// Export for ES6 modules
+export default ThemeManager;
 
 // Export for use in content script and tests
 if (typeof module !== 'undefined' && module.exports) {

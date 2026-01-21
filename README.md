@@ -22,7 +22,7 @@ A Firefox browser extension that brings dark mode to Proton Docs, providing a co
 ### Manual Installation (Development)
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/shadow-scribe.git
+   git clone https://github.com/chaotictoejam/shadow-scribe.git
    cd shadow-scribe
    ```
 

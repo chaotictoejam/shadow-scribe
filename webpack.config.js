@@ -5,8 +5,6 @@ module.exports = {
   entry: {
     background: './src/background.js',
     'content/content': './src/content/content.js',
-    'content/theme-manager': './src/content/theme-manager.js',
-    'content/toggle-button': './src/content/toggle-button.js',
     'utils/storage': './src/utils/storage.js',
     'utils/messaging': './src/utils/messaging.js',
     'options/options': './src/options/options.js',

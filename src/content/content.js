@@ -5,6 +5,10 @@
  * Main entry point that initializes the extension on Proton Docs pages.
  */
 
+import ThemeManager from './theme-manager.js';
+import ToggleButton from './toggle-button.js';
+import { getDocumentThemeState, getPreferences } from '../utils/storage.js';
+
 let themeManager;
 let toggleButton;
 
@@ -31,11 +35,16 @@ async function initialize() {
 
     // Load document-specific theme state
     const state = await getDocumentThemeState(documentId);
+    
+    console.log('Shadow Scribe: Document state:', state);
 
     // Apply theme if enabled for this document
     if (state.enabled) {
       const preferences = await getPreferences();
       await themeManager.applyDarkMode(preferences);
+      console.log('Shadow Scribe: Dark mode applied on load');
+    } else {
+      console.log('Shadow Scribe: Dark mode not enabled for this document. Click the toggle button to enable.');
     }
 
     // Create toggle button
