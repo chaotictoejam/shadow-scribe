@@ -130,13 +130,13 @@
   - Test button removal
   - Test positioning to avoid content blocking
 
-- [ ] 6.3 Write property-based test for toggle consistency (Property 8.5)
+- [x] 6.3 Write property-based test for toggle consistency (Property 8.5)
   - Test even number of toggles returns to original state
   - Test odd number of toggles results in opposite state
 
 ## 7. Dark Mode CSS Styles
 
-- [ ] 7.1 Create dark mode stylesheet (content/dark-mode.css)
+- [x] 7.1 Create dark mode stylesheet (content/dark-mode.css)
   - Define CSS custom properties (--dark-bg, --dark-text, --dark-accent)
   - Style body and main document areas
   - Style toolbar and menus
@@ -155,7 +155,7 @@
 
 ## 8. Content Script Entry Point
 
-- [ ] 8.1 Implement content script (content/content.js)
+- [x] 8.1 Implement content script (content/content.js)
   - Create initialize() function
   - Implement global state check
   - Implement document ID extraction from URL
@@ -175,7 +175,7 @@
 
 ## 9. Options Page UI
 
-- [ ] 9.1 Create options page HTML (options/options.html)
+- [x] 9.1 Create options page HTML (options/options.html)
   - Create page structure with container
   - Add global enable/disable checkbox
   - Add background color picker
@@ -186,7 +186,7 @@
   - Add reset button
   - Link CSS and JavaScript files
 
-- [ ] 9.2 Create options page styles (options/options.css)
+- [x] 9.2 Create options page styles (options/options.css)
   - Style container and layout
   - Style setting groups
   - Style form controls (checkboxes, color pickers, sliders)
@@ -194,7 +194,7 @@
   - Add responsive design
   - Add visual feedback for interactions
 
-- [ ] 9.3 Implement options page logic (options/options.js)
+- [x] 9.3 Implement options page logic (options/options.js)
   - Implement loadSettings() function
   - Implement saveSettings() function
   - Implement resetSettings() function
@@ -301,7 +301,7 @@
 
 ## 14. Documentation and Polish
 
-- [ ] 14.1 Create README.md
+- [x] 14.1 Create README.md
   - Add project description
   - Add installation instructions
   - Add usage guide
@@ -329,13 +329,13 @@
 
 ## 15. Packaging and Release
 
-- [ ] 15.1 Prepare for release
+- [x] 15.1 Prepare for release
   - Update version number in manifest.json
   - Create CHANGELOG.md
   - Review and update all documentation
   - Create release notes
 
-- [ ] 15.2 Build production package
+- [x] 15.2 Build production package
   - Run production build
   - Test packaged extension thoroughly
   - Verify all features work in packaged version

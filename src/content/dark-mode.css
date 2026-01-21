@@ -1,2 +1,343 @@
-/* Dark mode CSS styles */
-/* This file will be implemented in a later task */
+/**
+ * Shadow Scribe - Dark Mode Stylesheet
+ * Task 7.1: Create dark mode stylesheet (content/dark-mode.css)
+ * 
+ * Transforms Proton Docs into dark mode using CSS custom properties
+ * and targeted selectors.
+ */
+
+/* ============================================
+   CSS Custom Properties (Dynamic Theming)
+   ============================================ */
+:root {
+  --dark-bg: #1e1e1e;
+  --dark-text: #e0e0e0;
+  --dark-accent: #4a9eff;
+  --dark-border: #3a3a3a;
+  --dark-hover: #2a2a2a;
+  --dark-secondary-bg: #252525;
+  --dark-tertiary-bg: #1a1a1a;
+}
+
+/* ============================================
+   Main Document Background and Text
+   ============================================ */
+body.shadow-scribe-dark {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* Document canvas/editor area */
+body.shadow-scribe-dark [role='textbox'],
+body.shadow-scribe-dark .document-canvas,
+body.shadow-scribe-dark .editor-content,
+body.shadow-scribe-dark .docs-editor,
+body.shadow-scribe-dark .kix-page,
+body.shadow-scribe-dark .kix-page-content-wrapper {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* All text elements */
+body.shadow-scribe-dark p,
+body.shadow-scribe-dark span,
+body.shadow-scribe-dark div,
+body.shadow-scribe-dark h1,
+body.shadow-scribe-dark h2,
+body.shadow-scribe-dark h3,
+body.shadow-scribe-dark h4,
+body.shadow-scribe-dark h5,
+body.shadow-scribe-dark h6 {
+  color: var(--dark-text) !important;
+}
+
+/* ============================================
+   Toolbar and Menus
+   ============================================ */
+body.shadow-scribe-dark .toolbar,
+body.shadow-scribe-dark .menu,
+body.shadow-scribe-dark .dropdown,
+body.shadow-scribe-dark .docs-material,
+body.shadow-scribe-dark .docs-toolbar,
+body.shadow-scribe-dark .menu-button,
+body.shadow-scribe-dark [role='menubar'],
+body.shadow-scribe-dark [role='menu'] {
+  background-color: var(--dark-secondary-bg) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* Menu items */
+body.shadow-scribe-dark .menu-item,
+body.shadow-scribe-dark [role='menuitem'],
+body.shadow-scribe-dark .goog-menuitem {
+  background-color: var(--dark-secondary-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+body.shadow-scribe-dark .menu-item:hover,
+body.shadow-scribe-dark [role='menuitem']:hover,
+body.shadow-scribe-dark .goog-menuitem:hover {
+  background-color: var(--dark-hover) !important;
+}
+
+/* ============================================
+   Buttons and Controls
+   ============================================ */
+body.shadow-scribe-dark button,
+body.shadow-scribe-dark .button,
+body.shadow-scribe-dark .goog-button,
+body.shadow-scribe-dark input[type='button'],
+body.shadow-scribe-dark input[type='submit'] {
+  background-color: var(--dark-hover) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.shadow-scribe-dark button:hover,
+body.shadow-scribe-dark .button:hover,
+body.shadow-scribe-dark .goog-button:hover {
+  background-color: var(--dark-secondary-bg) !important;
+}
+
+/* Icon buttons */
+body.shadow-scribe-dark .icon-button,
+body.shadow-scribe-dark [role='button'] {
+  color: var(--dark-text) !important;
+}
+
+/* ============================================
+   Sidebars and Panels
+   ============================================ */
+body.shadow-scribe-dark .sidebar,
+body.shadow-scribe-dark .panel,
+body.shadow-scribe-dark .side-panel,
+body.shadow-scribe-dark .docs-explore,
+body.shadow-scribe-dark aside {
+  background-color: var(--dark-tertiary-bg) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* ============================================
+   Modal Dialogs and Popups
+   ============================================ */
+body.shadow-scribe-dark .modal,
+body.shadow-scribe-dark .dialog,
+body.shadow-scribe-dark .popup,
+body.shadow-scribe-dark [role='dialog'],
+body.shadow-scribe-dark .goog-dialog {
+  background-color: var(--dark-secondary-bg) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* Dialog headers */
+body.shadow-scribe-dark .dialog-header,
+body.shadow-scribe-dark .modal-header {
+  background-color: var(--dark-tertiary-bg) !important;
+  color: var(--dark-text) !important;
+  border-bottom-color: var(--dark-border) !important;
+}
+
+/* ============================================
+   Links and Accents
+   ============================================ */
+body.shadow-scribe-dark a {
+  color: var(--dark-accent) !important;
+}
+
+body.shadow-scribe-dark a:hover {
+  color: var(--dark-accent) !important;
+  opacity: 0.8;
+}
+
+/* ============================================
+   Form Elements
+   ============================================ */
+body.shadow-scribe-dark input[type='text'],
+body.shadow-scribe-dark input[type='email'],
+body.shadow-scribe-dark input[type='password'],
+body.shadow-scribe-dark input[type='search'],
+body.shadow-scribe-dark textarea,
+body.shadow-scribe-dark select {
+  background-color: var(--dark-hover) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.shadow-scribe-dark input::placeholder,
+body.shadow-scribe-dark textarea::placeholder {
+  color: #888888 !important;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+body.shadow-scribe-dark table {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.shadow-scribe-dark th,
+body.shadow-scribe-dark td {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.shadow-scribe-dark tr:hover {
+  background-color: var(--dark-hover) !important;
+}
+
+/* ============================================
+   Scrollbars (Webkit browsers)
+   ============================================ */
+body.shadow-scribe-dark ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+body.shadow-scribe-dark ::-webkit-scrollbar-track {
+  background: var(--dark-tertiary-bg);
+}
+
+body.shadow-scribe-dark ::-webkit-scrollbar-thumb {
+  background: var(--dark-border);
+  border-radius: 6px;
+}
+
+body.shadow-scribe-dark ::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
+}
+
+/* ============================================
+   Images and Media (Preserve Original)
+   ============================================ */
+body.shadow-scribe-dark img,
+body.shadow-scribe-dark video,
+body.shadow-scribe-dark canvas,
+body.shadow-scribe-dark picture,
+body.shadow-scribe-dark svg {
+  filter: none !important;
+}
+
+/* ============================================
+   Toggle Button Styling
+   ============================================ */
+.shadow-scribe-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--dark-accent);
+  border: 2px solid var(--dark-border);
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.shadow-scribe-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.shadow-scribe-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Ensure toggle button is always visible */
+body.shadow-scribe-dark .shadow-scribe-toggle {
+  background-color: var(--dark-accent);
+  color: #ffffff;
+}
+
+/* ============================================
+   Accessibility - Focus Indicators
+   ============================================ */
+body.shadow-scribe-dark *:focus {
+  outline-color: var(--dark-accent) !important;
+}
+
+body.shadow-scribe-dark button:focus,
+body.shadow-scribe-dark a:focus,
+body.shadow-scribe-dark input:focus,
+body.shadow-scribe-dark textarea:focus,
+body.shadow-scribe-dark select:focus {
+  outline: 2px solid var(--dark-accent) !important;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Selection Highlighting
+   ============================================ */
+body.shadow-scribe-dark ::selection {
+  background-color: var(--dark-accent);
+  color: #ffffff;
+}
+
+body.shadow-scribe-dark ::-moz-selection {
+  background-color: var(--dark-accent);
+  color: #ffffff;
+}
+
+/* ============================================
+   Code Blocks and Preformatted Text
+   ============================================ */
+body.shadow-scribe-dark code,
+body.shadow-scribe-dark pre {
+  background-color: var(--dark-tertiary-bg) !important;
+  color: #f8f8f2 !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* ============================================
+   Tooltips and Popovers
+   ============================================ */
+body.shadow-scribe-dark .tooltip,
+body.shadow-scribe-dark [role='tooltip'],
+body.shadow-scribe-dark .popover {
+  background-color: var(--dark-secondary-bg) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* ============================================
+   Loading Indicators
+   ============================================ */
+body.shadow-scribe-dark .spinner,
+body.shadow-scribe-dark .loading {
+  border-color: var(--dark-border) !important;
+  border-top-color: var(--dark-accent) !important;
+}
+
+/* ============================================
+   Badges and Labels
+   ============================================ */
+body.shadow-scribe-dark .badge,
+body.shadow-scribe-dark .label,
+body.shadow-scribe-dark .tag {
+  background-color: var(--dark-hover) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* ============================================
+   Dividers and Separators
+   ============================================ */
+body.shadow-scribe-dark hr,
+body.shadow-scribe-dark .divider,
+body.shadow-scribe-dark .separator {
+  border-color: var(--dark-border) !important;
+  background-color: var(--dark-border) !important;
+}
+
