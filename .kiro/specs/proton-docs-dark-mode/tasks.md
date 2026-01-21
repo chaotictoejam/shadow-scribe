@@ -45,7 +45,7 @@
   - Test getGlobalState default value
   - Test setGlobalState persistence
 
-- [ ] 2.3 Write property-based test for storage persistence (Property 8.1)
+- [x] 2.3 Write property-based test for storage persistence (Property 8.1)
   - Test theme state persistence for arbitrary document IDs and states
   - Verify saved state is always retrievable
 
@@ -68,7 +68,7 @@
 
 ## 4. Background Service Worker
 
-- [ ] 4.1 Implement background script (background.js)
+- [x] 4.1 Implement background script (background.js)
   - Set up message listener
   - Implement GET_GLOBAL_STATE handler
   - Implement SET_GLOBAL_STATE handler
@@ -94,28 +94,28 @@
   - Implement observeDOMChanges() method
   - Implement disconnectObserver() method
 
-- [ ] 5.2 Write unit tests for ThemeManager
+- [x] 5.2 Write unit tests for ThemeManager
   - Test applyDarkMode applies CSS custom properties
   - Test removeDarkMode removes all styles
   - Test updatePreferences updates existing styles
   - Test MutationObserver initialization
   - Test observer disconnection
 
-- [ ] 5.3 Write property-based test for theme idempotence (Property 8.3)
+- [x] 5.3 Write property-based test for theme idempotence (Property 8.3)
   - Test applying theme multiple times produces same result
   - Verify idempotent behavior for arbitrary preferences
 
-- [ ] 5.4 Write property-based test for theme removal (Property 8.4)
+- [x] 5.4 Write property-based test for theme removal (Property 8.4)
   - Test theme removal restores original state
   - Verify no dark mode artifacts remain after removal
 
-- [ ] 5.5 Write property-based test for document preservation (Property 8.8)
+- [x] 5.5 Write property-based test for document preservation (Property 8.8)
   - Test dark mode never modifies document data
   - Verify document content, structure, and formatting unchanged
 
 ## 6. Toggle Button Component
 
-- [ ] 6.1 Implement ToggleButton class (content/toggle-button.js)
+- [x] 6.1 Implement ToggleButton class (content/toggle-button.js)
   - Create ToggleButton constructor
   - Implement create() method
   - Implement handleToggle() method
@@ -123,7 +123,7 @@
   - Implement remove() method
   - Add button positioning logic
 
-- [ ] 6.2 Write unit tests for ToggleButton
+- [x] 6.2 Write unit tests for ToggleButton
   - Test button creation and DOM injection
   - Test click event handling
   - Test state updates (icon changes)
