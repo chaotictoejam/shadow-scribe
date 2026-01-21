@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Shadow Scribe",
+  "version": "1.0.0",
+  "description": "Apply dark mode styling to Proton Docs documents for comfortable reading and editing in low-light environments",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["*://drive.proton.me/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://drive.proton.me/*/docs/*"],
+      "js": [
+        "utils/storage.js",
+        "utils/messaging.js",
+        "content/theme-manager.js",
+        "content/toggle-button.js",
+        "content/content.js"
+      ],
+      "css": ["content/dark-mode.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}
