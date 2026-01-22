@@ -1,5 +1,10 @@
 // Jest setup file for global test configuration
 
+// Add TextEncoder/TextDecoder polyfills for JSDOM
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
 // Mock browser API for WebExtensions
 global.browser = {
   storage: {

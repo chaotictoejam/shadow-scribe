@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode CSS Test - Proton Docs Mock</title>
+    <link rel="stylesheet" href="dark-mode.css">
+    <style>
+        /* Mock Proton Docs structure styles */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .docs-container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: #f5f5f5;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        
+        .toolbar {
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .button {
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            max-width: 500px;
+        }
+        
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        
+        .test-image {
+            width: 200px;
+            height: 150px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <button class="button">File</button>
+        <button class="button">Edit</button>
+        <button class="button">View</button>
+        <button class="button">Insert</button>
+    </div>
+    
+    <div class="docs-container">
+        <aside class="sidebar">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+                <li><a href="#section3">Section 3</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main-content">
+            <h1>Test Document Title</h1>
+            
+            <div class="test-section">
+                <h2>Text Content Test</h2>
+                <p>This is a paragraph of text that should be readable in dark mode.</p>
+                <p>Links should be visible: <a href="#">This is a link</a></p>
+                <strong>Bold text</strong> and <em>italic text</em> should also work.
+            </div>
+            
+            <div class="test-section">
+                <h2>Image Preservation Test</h2>
+                <p>Images should NOT be inverted or filtered:</p>
+                <div class="test-image"></div>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect fill='%23ff0000' width='100' height='100'/%3E%3C/svg%3E" alt="Red square">
+            </div>
+            
+            <div class="test-section">
+                <h2>Button Test</h2>
+                <button class="button">Primary Button</button>
+                <button class="button">Secondary Button</button>
+            </div>
+            
+            <div class="test-section">
+                <h2>Contrast Test</h2>
+                <p style="font-size: 14px;">Small text (14px) - should meet WCAG AA contrast ratio (4.5:1)</p>
+                <p style="font-size: 18px; font-weight: bold;">Large text (18px bold) - should meet WCAG AA contrast ratio (3:1)</p>
+            </div>
+        </main>
+    </div>
+    
+    <div class="modal" style="display: none;" id="testModal">
+        <h2>Modal Dialog</h2>
+        <p>This modal should have proper dark mode styling.</p>
+        <button class="button">Close</button>
+    </div>
+    
+    <script>
+        // Toggle modal for testing
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'm') {
+                const modal = document.getElementById('testModal');
+                modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+            }
+        });
+        
+        // Apply dark mode for testing
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'd') {
+                document.body.classList.toggle('dark-mode-active');
+            }
+        });
+        
+        console.log('Test page loaded. Press "d" to toggle dark mode, "m" to toggle modal.');
+    </script>
+</body>
+</html>

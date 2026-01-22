@@ -108,10 +108,10 @@ browser.runtime.onInstalled.addListener(async (details) => {
     const { globalEnabled } = await browser.storage.local.get('globalEnabled');
     if (globalEnabled === undefined) {
       await browser.storage.local.set({ globalEnabled: true });
-      console.log('Shadow Scribe: Initialized with default settings');
+      console.log('🪶 Shadow Scribe: Initialized with default settings');
     }
   } else if (details.reason === 'update') {
-    console.log('Shadow Scribe: Extension updated to version', browser.runtime.getManifest().version);
+    console.log('🪶 Shadow Scribe: Extension updated to version', browser.runtime.getManifest().version);
   }
 });
 

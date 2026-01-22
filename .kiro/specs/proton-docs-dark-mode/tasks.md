@@ -147,7 +147,7 @@
   - Preserve images and media (no filter inversion)
   - Style toggle button
 
-- [ ] 7.2 Test CSS styles on mock Proton Docs structure
+- [x] 7.2 Test CSS styles on mock Proton Docs structure
   - Create test HTML with Proton Docs-like structure
   - Verify all elements are styled correctly
   - Test contrast ratios for accessibility
@@ -166,7 +166,7 @@
   - Implement handlePreferencesUpdate()
   - Add DOM ready check
 
-- [ ] 8.2 Write integration tests for content script
+- [x] 8.2 Write integration tests for content script
   - Test initialization on page load
   - Test theme application based on saved state
   - Test message handling from background script
@@ -203,7 +203,7 @@
   - Add save confirmation feedback
   - Handle errors gracefully
 
-- [ ] 9.4 Write tests for options page
+- [x] 9.4 Write tests for options page
   - Test loadSettings populates form correctly
   - Test saveSettings persists changes
   - Test resetSettings restores defaults
@@ -212,25 +212,28 @@
 
 ## 10. Property-Based Tests for Advanced Properties
 
-- [ ] 10.1 Write property-based test for global state override (Property 8.6)
+- [~] 10.1 Write property-based test for global state override (Property 8.6)
   - Test global disable overrides all document states
   - Test re-enabling restores individual document states
   - Verify behavior with multiple documents
+  - Note: Tests created but need refinement for edge cases (empty docIds)
 
-- [ ] 10.2 Write property-based test for preference propagation (Property 8.7)
+- [x] 10.2 Write property-based test for preference propagation (Property 8.7)
   - Test preference updates propagate to all tabs
   - Verify all tabs receive updates within time limit
   - Test with varying number of tabs
 
-- [ ] 10.3 Write property-based test for performance bounds (Property 8.9)
+- [~] 10.3 Write property-based test for performance bounds (Property 8.9)
   - Test theme application completes within 100ms
   - Test toggle completes within 200ms
   - Verify performance with arbitrary preferences
+  - Note: Tests created but need JSDOM setup refinement
 
-- [ ] 10.4 Write property-based test for color validity (Property 8.10)
+- [~] 10.4 Write property-based test for color validity (Property 8.10)
   - Test all valid hex colors are handled correctly
   - Verify CSS custom properties are set correctly
   - Test with arbitrary valid hex color combinations
+  - Note: Tests created but need JSDOM setup refinement
 
 ## 11. Integration and End-to-End Testing
 

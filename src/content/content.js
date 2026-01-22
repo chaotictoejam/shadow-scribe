@@ -26,7 +26,7 @@ async function initialize() {
     const { globalEnabled } = response;
 
     if (!globalEnabled) {
-      console.log('Shadow Scribe: Extension is globally disabled');
+      console.log('🪶 Shadow Scribe: Extension is globally disabled');
       return;
     }
 
