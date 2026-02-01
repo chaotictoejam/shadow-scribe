@@ -266,7 +266,7 @@ class ThemeManager {
         childList: true,
         subtree: true,
       });
-    } catch (error) {
+    } catch {
       // Silently fail if observe doesn't work (e.g., in test environments)
     }
   }
