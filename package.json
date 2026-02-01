@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Firefox browser extension that applies dark mode styling to Proton Docs documents",
   "main": "background.js",
+  "type": "module",
   "scripts": {
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
