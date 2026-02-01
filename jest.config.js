@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   testEnvironment: 'jsdom',
   testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(test|pbt).js'],
   collectCoverageFrom: ['src/**/*.js', '!src/**/*.test.js', '!src/**/*.pbt.js'],
