@@ -1,8 +1,8 @@
-# 🌙 Shadow Scribe
+# Shadow Scribe
 
 A Firefox browser extension that brings dark mode to Proton Docs, providing a comfortable reading and editing experience in low-light environments.
 
-## ✨ Features
+## Features
 
 - **🎨 Customizable Dark Theme** - Adjust colors, darkness levels, and accents to match your preferences
 - **⚡ Quick Toggle** - Easily switch between light and dark modes with a floating toggle button
