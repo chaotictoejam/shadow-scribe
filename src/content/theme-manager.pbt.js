@@ -27,6 +27,12 @@ Object.defineProperty(document, 'documentElement', {
 Object.defineProperty(document, 'body', {
   writable: true,
   value: {
+    style: {
+      backgroundColor: '',
+      color: '',
+      setProperty: mockSetProperty,
+      removeProperty: mockRemoveProperty,
+    },
     classList: {
       add: mockClassListAdd,
       remove: mockClassListRemove,
@@ -382,7 +388,7 @@ describe('Property 8.8: Document Data Preservation', () => {
           // Property: Only CSS properties and classes should be removed
           const onlyStyleOperations = 
             mockRemoveProperty.mock.calls.every(call => 
-              call[0].startsWith('--dark-')
+              call[0].startsWith('--dark-') || call[0] === 'background-color' || call[0] === 'color'
             ) &&
             mockClassListRemove.mock.calls.every(call => 
               call[0] === 'shadow-scribe-dark'

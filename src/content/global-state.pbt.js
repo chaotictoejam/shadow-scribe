@@ -26,13 +26,19 @@ describe('Property 8.6: Global State Override', () => {
     await fc.assert(
       fc.asyncProperty(
         fc.array(fc.record({
-          docId: fc.string(1, 20),
+          docId: fc.string({ minLength: 1, maxLength: 20 }),
           enabled: fc.boolean()
         }), { minLength: 1, maxLength: 10 }),
         async (documents) => {
+          // Ensure unique docIds by adding index
+          const uniqueDocs = documents.map((doc, index) => ({
+            ...doc,
+            docId: `${doc.docId}_${index}`
+          }));
+          
           // Set up document states
           const docStates = {};
-          documents.forEach(doc => {
+          uniqueDocs.forEach(doc => {
             docStates[`doc_${doc.docId}`] = { enabled: doc.enabled };
           });
 
@@ -53,7 +59,7 @@ describe('Property 8.6: Global State Override', () => {
           chrome.runtime.sendMessage.mockResolvedValue({ enabled: false });
 
           // Check each document
-          for (const doc of documents) {
+          for (const doc of uniqueDocs) {
             const globalState = await chrome.runtime.sendMessage({ type: 'GET_GLOBAL_STATE' });
             const docState = await chrome.storage.local.get(`doc_${doc.docId}`);
 
@@ -71,13 +77,19 @@ describe('Property 8.6: Global State Override', () => {
     await fc.assert(
       fc.asyncProperty(
         fc.array(fc.record({
-          docId: fc.string(1, 20),
+          docId: fc.string({ minLength: 1, maxLength: 20 }),
           enabled: fc.boolean()
         }), { minLength: 1, maxLength: 10 }),
         async (documents) => {
+          // Ensure unique docIds by adding index
+          const uniqueDocs = documents.map((doc, index) => ({
+            ...doc,
+            docId: `${doc.docId}_${index}`
+          }));
+          
           // Set up document states
           const docStates = {};
-          documents.forEach(doc => {
+          uniqueDocs.forEach(doc => {
             docStates[`doc_${doc.docId}`] = { enabled: doc.enabled };
           });
 
@@ -98,7 +110,7 @@ describe('Property 8.6: Global State Override', () => {
           chrome.runtime.sendMessage.mockResolvedValue({ enabled: true });
 
           // Check each document respects its individual state
-          for (const doc of documents) {
+          for (const doc of uniqueDocs) {
             const globalState = await chrome.runtime.sendMessage({ type: 'GET_GLOBAL_STATE' });
             const docState = await chrome.storage.local.get(`doc_${doc.docId}`);
 

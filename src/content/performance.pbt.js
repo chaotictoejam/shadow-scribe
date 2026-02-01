@@ -22,10 +22,10 @@ describe('Property 8.9: Performance Bounds', () => {
           global.document = dom.window.document;
           global.MutationObserver = dom.window.MutationObserver;
           
-          const themeManager = new ThemeManager(preferences);
+          const themeManager = new ThemeManager();
 
           const startTime = performance.now();
-          themeManager.applyDarkMode();
+          themeManager.applyDarkMode(preferences);
           const endTime = performance.now();
 
           const duration = endTime - startTime;
@@ -56,12 +56,12 @@ describe('Property 8.9: Performance Bounds', () => {
           global.document = dom.window.document;
           global.MutationObserver = dom.window.MutationObserver;
           
-          const themeManager = new ThemeManager(preferences);
+          const themeManager = new ThemeManager();
 
           const startTime = performance.now();
           
           // Apply theme
-          themeManager.applyDarkMode();
+          themeManager.applyDarkMode(preferences);
           
           // Remove theme (toggle off)
           themeManager.removeDarkMode();
@@ -104,10 +104,10 @@ describe('Property 8.9: Performance Bounds', () => {
             document.body.appendChild(div);
           }
 
-          const themeManager = new ThemeManager(preferences);
+          const themeManager = new ThemeManager();
 
           const startTime = performance.now();
-          themeManager.applyDarkMode();
+          themeManager.applyDarkMode(preferences);
           const endTime = performance.now();
 
           const duration = endTime - startTime;
