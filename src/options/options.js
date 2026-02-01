@@ -3,6 +3,14 @@
  * Task 9.3: Implement options page logic (options/options.js)
  */
 
+import {
+  DEFAULT_PREFERENCES,
+  getPreferences,
+  setPreferences,
+  getGlobalState,
+  setGlobalState,
+} from '../utils/storage.js';
+
 /**
  * Load current settings and populate form
  */

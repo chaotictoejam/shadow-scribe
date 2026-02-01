@@ -16,7 +16,7 @@ class MockThemeManager {
 
 // Mock DOM APIs
 document.body.appendChild = jest.fn();
-document.createElement = jest.fn((tag) => ({
+document.createElement = jest.fn((_tag) => ({
   id: '',
   className: '',
   innerHTML: '',
@@ -204,7 +204,6 @@ describe('Property 8.5: Toggle State Consistency', () => {
           toggleButton.create();
 
           window.getPreferences.mockResolvedValue({});
-          let currentState = false;
 
           // Perform complete cycles
           for (let i = 0; i < cycles; i++) {

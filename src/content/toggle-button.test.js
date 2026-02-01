@@ -16,7 +16,7 @@ class MockThemeManager {
 // Mock DOM APIs
 document.body.appendChild = jest.fn();
 document.body.removeChild = jest.fn();
-document.createElement = jest.fn((tag) => {
+document.createElement = jest.fn((_tag) => {
   const element = {
     id: '',
     className: '',
