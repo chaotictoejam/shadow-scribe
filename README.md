@@ -1,5 +1,7 @@
 # Shadow Scribe
 
+[![Tests](https://github.com/chaotictoejam/shadow-scribe/actions/workflows/test.yml/badge.svg)](https://github.com/chaotictoejam/shadow-scribe/actions/workflows/test.yml)
+
 A Firefox browser extension that brings dark mode to Proton Docs, providing a comfortable reading and editing experience in low-light environments.
 
 ## Features
