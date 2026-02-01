@@ -12,7 +12,7 @@ A Firefox browser extension that brings dark mode to Proton Docs, providing a co
 - **♿ Accessible** - Maintains proper contrast ratios and keyboard navigation
 - **🚀 Performant** - Lightweight and fast, with minimal impact on page load times
 
-## 📦 Installation
+## Installation
 
 ### From Firefox Add-ons (Recommended)
 1. Visit the [Shadow Scribe page on Firefox Add-ons](https://addons.mozilla.org/firefox/addon/shadow-scribe/)
@@ -42,7 +42,7 @@ A Firefox browser extension that brings dark mode to Proton Docs, providing a co
    - Click "Load Temporary Add-on"
    - Select the `manifest.json` file from the `dist` folder
 
-## 🚀 Usage
+## Usage
 
 ### Basic Usage
 
@@ -70,7 +70,7 @@ A Firefox browser extension that brings dark mode to Proton Docs, providing a co
 
 - **Ctrl/Cmd + S** (in settings page): Save your preferences
 
-## 🛠️ Development
+## Development
 
 ### Prerequisites
 
@@ -109,25 +109,25 @@ shadow-scribe/
 ├── src/
 │   ├── background.js          # Background service worker
 │   ├── manifest.json          # Extension manifest
-│   ├── content/
-│   │   ├── content.js         # Content script entry point
-│   │   ├── theme-manager.js   # Theme application logic
-│   │   ├── toggle-button.js   # Toggle button component
+│   ├── content/               # Content scripts and theme logic
+│   │   ├── content.js         # Entry point
+│   │   ├── theme-manager.js   # Theme application
+│   │   ├── toggle-button.js   # Toggle UI component
 │   │   └── dark-mode.css      # Dark mode styles
-│   ├── options/
-│   │   ├── options.html       # Settings page
-│   │   ├── options.js         # Settings logic
-│   │   └── options.css        # Settings styles
-│   ├── utils/
+│   ├── options/               # Settings page
+│   │   ├── options.html
+│   │   ├── options.js
+│   │   └── options.css
+│   ├── utils/                 # Shared utilities
 │   │   ├── storage.js         # Storage abstraction
-│   │   └── messaging.js       # Message passing utilities
-│   └── icons/
-│       ├── icon-16.png
-│       ├── icon-48.png
-│       └── icon-128.png
+│   │   └── messaging.js       # Message passing
+│   └── icons/                 # Extension icons
+│       ├── logo.svg           # Source logo
+│       └── icon-*.png         # Generated icons (16, 48, 128)
+├── scripts/                   # Build scripts
 ├── dist/                      # Built extension (generated)
-├── tests/                     # Test files
-└── package.json
+├── *.test.js, *.pbt.js       # Test files (co-located with source)
+└── Configuration files        # Jest, Webpack, Babel, ESLint, etc.
 ```
 
 ### Testing
@@ -160,7 +160,7 @@ npm run build:dev
 
 The built extension will be in the `dist/` folder.
 
-## 🧪 Testing Strategy
+## Testing Strategy
 
 Shadow Scribe uses a comprehensive testing approach:
 
@@ -198,37 +198,38 @@ Contributions are welcome! Please follow these steps:
 - Ensure all tests pass before submitting PR
 - Keep commits focused and atomic
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Inspired by the "Docs after Dark" extension for Google Docs
 - Built for the Proton community
 - Thanks to all contributors and testers
 
-## 📞 Support
+## Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/shadow-scribe/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/shadow-scribe/discussions)
+- **Issues**: [GitHub Issues](https://github.com/chaotictoejam/shadow-scribe/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/chaotictoejam/shadow-scribe/discussions)
 - **Email**: support@shadowscribe.example.com
 
-## 🗺️ Roadmap
+## Roadmap
 
-- [ ] Support for additional Proton services
-- [ ] Sync settings across devices
-- [ ] More theme presets
-- [ ] Custom CSS injection
+- [ ] Theme presets (Solarized, Nord, Dracula, etc.)
 - [ ] Scheduled dark mode (auto-enable at sunset)
+- [ ] Custom CSS injection for advanced users
+- [ ] Keyboard shortcuts for quick toggle
+- [ ] Import/export settings
+- [ ] Auto-detect system theme preference
 
-## 📊 Browser Compatibility
+## Browser Compatibility
 
 - **Firefox**: 115+ ✅
 - **Chrome**: Not supported (Firefox-only extension)
 - **Edge**: Not supported (Firefox-only extension)
 
-## 🔒 Privacy
+## Privacy
 
 Shadow Scribe respects your privacy:
 
@@ -238,28 +239,28 @@ Shadow Scribe respects your privacy:
 - **No external requests**: Extension works entirely offline
 - **Open source**: Code is fully auditable
 
-## ⚡ Performance
+## Performance
 
 - **Initial load**: < 100ms
 - **Toggle transition**: < 200ms
 - **Memory usage**: < 50MB per tab
 - **CPU usage**: < 1% during idle
 
-## 🐛 Known Issues
+## Known Issues
 
 - Some dynamically loaded content may briefly flash light mode before dark mode applies
 - Custom Proton Docs themes may conflict with dark mode styling
 
 See [ISSUES.md](ISSUES.md) for a complete list of known issues and workarounds.
 
-## 📚 Documentation
+## Documentation
 
 - [User Guide](docs/USER_GUIDE.md) - Detailed usage instructions
 - [Developer Guide](docs/DEVELOPER_GUIDE.md) - Development setup and architecture
 - [API Documentation](docs/API.md) - Internal API reference
 - [Changelog](CHANGELOG.md) - Version history and changes
 
-## 🎯 Project Goals
+## Project Goals
 
 1. Provide a comfortable dark mode experience for Proton Docs users
 2. Maintain document data integrity (never modify user content)
