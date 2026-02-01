@@ -75,8 +75,10 @@ class ThemeManager {
     document.body.classList.add('shadow-scribe-dark');
     
     // Apply inline styles directly to body for maximum specificity
-    document.body.style.backgroundColor = this.preferences.backgroundColor || '#1e1e1e';
-    document.body.style.color = this.preferences.textColor || '#e0e0e0';
+    if (document.body.style) {
+      document.body.style.backgroundColor = this.preferences.backgroundColor || '#1e1e1e';
+      document.body.style.color = this.preferences.textColor || '#e0e0e0';
+    }
     
     // Apply styles to iframes (Proton Docs uses iframes for document content)
     this.applyStylesToIframes();
@@ -97,8 +99,10 @@ class ThemeManager {
     document.body.classList.remove('shadow-scribe-dark');
     
     // Remove inline styles from body
-    document.body.style.removeProperty('background-color');
-    document.body.style.removeProperty('color');
+    if (document.body.style) {
+      document.body.style.removeProperty('background-color');
+      document.body.style.removeProperty('color');
+    }
     
     // Remove styles from iframes
     this.removeStylesFromIframes();
@@ -222,6 +226,11 @@ class ThemeManager {
    * The observer watches for new elements being added to the DOM
    */
   observeDOMChanges() {
+    // Guard: Don't observe if document.body doesn't exist
+    if (!document.body) {
+      return;
+    }
+    
     let debounceTimer = null;
     
     this.observer = new MutationObserver((mutations) => {
@@ -252,10 +261,14 @@ class ThemeManager {
       }, 100); // Wait 100ms before reapplying
     });
 
-    this.observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
+    try {
+      this.observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    } catch (error) {
+      // Silently fail if observe doesn't work (e.g., in test environments)
+    }
   }
 
   /**
