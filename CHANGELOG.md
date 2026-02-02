@@ -91,7 +91,6 @@ Shadow Scribe brings elegant, customizable dark mode styling to your Proton Docs
 
 #### Browser Compatibility
 - **Firefox 115+** - Tested and optimized for modern Firefox
-- **Manifest V3** - Future-proof extension architecture
 - **WebExtensions API** - Standard browser extension APIs
 - **No Vendor Lock-in** - Portable codebase following web standards
 
