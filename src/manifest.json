@@ -4,8 +4,12 @@
   "version": "1.0.0",
   "description": "Apply dark mode styling to Proton Docs documents for comfortable reading and editing in low-light environments",
   "permissions": ["storage", "activeTab", "*://drive.proton.me/*", "*://docs.proton.me/*", "*://docs-editor.proton.me/*", "*://account.proton.me/*"],
-  "data_collection_permissions": {
-    "data_collection": false
+  "browser_specific_settings": {
+    "gecko": {
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
   },
   "background": {
     "scripts": ["background.js"]
