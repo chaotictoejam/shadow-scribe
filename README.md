@@ -17,7 +17,7 @@ A Firefox browser extension that brings dark mode to Proton Docs, providing a co
 ## Installation
 
 ### From Firefox Add-ons (Recommended)
-1. Visit the [Shadow Scribe page on Firefox Add-ons](https://addons.mozilla.org/firefox/addon/shadow-scribe/)
+1. Visit the [Shadow Scribe page on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/shadow-scribe/)
 2. Click "Add to Firefox"
 3. Confirm the installation
 
@@ -214,7 +214,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Issues**: [GitHub Issues](https://github.com/chaotictoejam/shadow-scribe/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/chaotictoejam/shadow-scribe/discussions)
-- **Email**: support@shadowscribe.example.com
 
 ## Roadmap
 
