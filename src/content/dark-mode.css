@@ -152,6 +152,26 @@ body.shadow-scribe-dark a:hover {
   opacity: 0.8;
 }
 
+/* Hyperlink components with inline styles */
+body.shadow-scribe-dark [data-testid='hyperlink-link'],
+body.shadow-scribe-dark [data-testid='hyperlink-link'] *,
+body.shadow-scribe-dark a[href][target='_blank'] {
+  color: var(--dark-accent) !important;
+}
+
+body.shadow-scribe-dark .flex.items-center a,
+body.shadow-scribe-dark .flex.items-center a * {
+  color: var(--dark-accent) !important;
+}
+
+/* Lexical editor links */
+body.shadow-scribe-dark .Lexical__link,
+body.shadow-scribe-dark a.Lexical__link,
+body.shadow-scribe-dark .Lexical__link span,
+body.shadow-scribe-dark .Lexical__link [data-lexical-text] {
+  color: var(--dark-accent) !important;
+}
+
 /* ============================================
    Form Elements
    ============================================ */
